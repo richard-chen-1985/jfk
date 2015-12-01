@@ -1,0 +1,38 @@
+{
+  "name": "jfk",
+  "version": "0.0.0",
+  "description": "A front-end solution base on fis3",
+  "main": "index.js",
+  "bin": {
+    "fk": "bin/jfk"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richard-chen-1985/jfk"
+  },
+  "keywords": [
+    "fis3",
+    "jfk"
+  ],
+  "author": "richard chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richard-chen-1985/jfk/issues"
+  },
+  "homepage": "https://github.com/richard-chen-1985/jfk",
+  "dependencies": {
+    "fis-optimizer-clean-css": "0.0.12",
+    "fis-optimizer-png-compressor": "^0.1.2",
+    "fis-optimizer-uglify-js": "^0.1.14",
+    "fis-parser-sass": "^0.3.10",
+    "fis3": "^3.3.0",
+    "fis3-deploy-replace": "^1.0.2",
+    "fis3-hook-amd": "^0.1.9",
+    "fis3-hook-cmd": "^0.1.2",
+    "liftoff": "^2.2.0",
+    "minimist": "^1.2.0"
+  }
+}
