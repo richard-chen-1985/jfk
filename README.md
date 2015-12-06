@@ -1,6 +1,14 @@
 # jfk
 front-end solution based on fis3 for java（基于FIS3的JAVA前端工程化解决方案）
 
+# 使用方法
+首先需要安装`nodejs`和`npm`，然后`npm install -g jfk`安装`jfk`工具。
+
+* `jfk server start` 开启本地服务器
+* `jfk release` 发布本地测试代码到本地服务器
+
+查看本解决方案的demo请到[https://github.com/richard-chen-1985/jfk-demo](https://github.com/richard-chen-1985/jfk-demo)
+
 # 1. 工程化目标
 * 开发时
     * 组件化/模块化开发（分治）

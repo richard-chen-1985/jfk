@@ -35,6 +35,7 @@
     "fis3-hook-cmd": "^0.1.2",
     "fis3-hook-commonjs": "^0.1.5",
     "fis3-preprocessor-extlang": "^1.1.4",
+    "fis3-server-jfk": "^0.0.1",
     "liftoff": "^2.2.0",
     "minimist": "^1.2.0"
   }
