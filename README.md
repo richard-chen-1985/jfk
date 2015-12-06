@@ -1,5 +1,5 @@
 # jfk
-front-end solution based on fis3 for java（基于FIS3的JAVA前端工程化解决方案）
+front-end solution based on fis3 for java（基于FIS3的JAVA Velocity前端工程化解决方案）
 
 # 使用方法
 首先需要安装`nodejs`和`npm`，然后`npm install -g jfk`安装`jfk`工具。
@@ -600,4 +600,4 @@ rewrite ^\/api\/now /mock/ajax/api/now.php
 * fis-conf.js 项目编译配置文件。
 
 # 感谢
-感谢[@云龙大大](https://github.com/fouber)在前端工程化方面的分享，以及[FIS团队](https://github.com/fex-team)的好工具，可以让自己抢建适合于自己的前端开发解决方案。
+感谢[@云龙大大](https://github.com/fouber)在前端工程化方面的分享，以及[FIS团队](https://github.com/fex-team)的好工具，可以让自己搭建适合于自己的前端开发解决方案。
