@@ -1,10 +1,10 @@
 {
   "name": "jfk",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A front-end solution base on fis3",
   "main": "index.js",
   "bin": {
-    "fk": "bin/jfk"
+    "jfk": "bin/jfk"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,10 +28,13 @@
     "fis-optimizer-png-compressor": "^0.1.2",
     "fis-optimizer-uglify-js": "^0.1.14",
     "fis-parser-sass": "^0.3.10",
-    "fis3": "^3.3.0",
+    "fis3": "^3.3.2",
+    "fis3-command-server": "0.0.7",
     "fis3-deploy-replace": "^1.0.2",
     "fis3-hook-amd": "^0.1.9",
     "fis3-hook-cmd": "^0.1.2",
+    "fis3-hook-commonjs": "^0.1.5",
+    "fis3-preprocessor-extlang": "^1.1.4",
     "liftoff": "^2.2.0",
     "minimist": "^1.2.0"
   }

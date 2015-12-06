@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+
+var Liftoff = require('liftoff');
+var argv = require('minimist')(process.argv.slice(2));
+var path = require('path');
+var cli = new Liftoff({
+    name: 'jfk',
+    processTitle: 'jfk',
+    moduleName: 'jfk',
+    configName: '{jfk,fis}-conf',
+    extensions: {
+        '.js': null
+    }
+});
+
+cli.launch({
+    cwd: argv.r || argv.root,
+    configPath: argv.f || argv.file
+}, function (env) {
+    var jfk;
+    if (!env.modulePath) {
+        jfk = require('../');
+    } else {
+        jfk = require(env.modulePath);
+    }
+    jfk.set('system.localNPMFolder', path.join(env.cwd, 'node_modules/jfk'));
+    jfk.set('system.globalNPMFolder', path.dirname(__dirname));
+
+    // 截获release后续参数
+    argv._[0] === 'release' && setReleaseArg(argv);
+
+    jfk.cli.run(argv, env);
+});
+
+// 获取release参数，添加jfk设置
+function setReleaseArg(argv) {
+    if(argv.D || argv.domain) {
+        jfk.set('--domain', true);
+        delete argv.D;
+        delete argv.domain;
+    }
+    if(argv.p || argv.pack) {
+        jfk.set('--pack', true);
+        delete argv.p;
+        delete argv.pack;
+    }
+}
