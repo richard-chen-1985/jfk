@@ -23,15 +23,16 @@ front-end solution based on fis3 for java（基于FIS3的JAVA Velocity前端工�
 ### 组件化/模块化开发
 
 ```
- ├ widgets
- │ ├ header
- │ │ ├ header.js
- │ │ ├ header.css
- │ │ ├ header.html
- │ │ └ logo.png
- │ ├ tab
- │ ├ list
- │ └ footer
+root
+  └ widgets
+    ├ header
+    │  ├ header.js
+    │  ├ header.css
+    │  ├ header.html
+    │  └ logo.png
+    ├ tab
+    ├ list
+    └ footer
 ```
 
 ### 一句话引用组件/模块
@@ -597,7 +598,75 @@ rewrite ^\/api\/now /mock/ajax/api/now.php
 * widget 目录存放各类组件，组件中 js 都采用模块化方式开发。
 * test 用来存放各种假数据模拟文件。
 * server.conf 页面重定向配置规则文件。
-* fis-conf.js 项目编译配置文件。
+* jfk-conf.js 项目编译配置文件。
+
+# 后端使用
+
+为了让 velocity 能正常渲染模板，需要设置模板目录，以及将 jfk 提供的自定义 diretives 启动。 配置内容如下：
+
+```
+<bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+    <property name="resourceLoaderPath" value="/WEB-INF/views/"/>
+    <property name= "velocityProperties">
+        <props>
+            <prop key="input.encoding">utf-8</prop>
+            <prop key="output.encoding">utf-8</prop>
+            <!--启用 jfk 提供的自定义 diretives 启动-->
+            <prop key="userdirective">com.baidu.fis.velocity.directive.Html, com.baidu.fis.velocity.directive.Head, com.baidu.fis.velocity.directive.Body, com.baidu.fis.velocity.directive.Require, com.baidu.fis.velocity.directive.Script, com.baidu.fis.velocity.directive.Style, com.baidu.fis.velocity.directive.Uri, com.baidu.fis.velocity.directive.Widget, com.baidu.fis.velocity.directive.Block, com.baidu.fis.velocity.directive.Extends</prop>
+        </props>
+    </property>
+</bean>
+```
+
+为了让 fis 自定义的 directive 能够正常读取 map.json 文件，需要添加一个 bean 初始化一下。
+
+```
+<!--初始 fis 配置-->
+<bean id="fisInit" class="com.baidu.fis.velocity.spring.FisBean" />
+```
+
+默认 map json 文件是从 /WEB-INF/config 文件夹下读取的，如果有修改存放地址，则需要添加一个 fis.properties 文件到 /WEB-INF/ 目录。 内容如下：
+
+```
+# 相对与 WEB-APP 根目录。
+mapDir = /velocity/config
+```
+
+View Resolver 推荐配置
+
+```
+<bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+    <property name="cache" value="true"/>
+    <property name="prefix" value=""/>
+    <property name="suffix" value=".vm"/>
+    <property name="cacheUnresolved" value="false" />
+    <property name="exposeSpringMacroHelpers" value="true"/>
+    <property name="contentType" value="text/html;charset=UTF-8" />
+    <property name="requestContextAttribute" value="request" />
+    <property name="exposeSessionAttributes" value="true" />
+    <property name="attributesMap">
+        <map>
+            <entry key="esc"><bean class="org.apache.velocity.tools.generic.EscapeTool"/></entry>
+            <entry key="render"><bean class="org.apache.velocity.tools.generic.RenderTool" /></entry>
+            <entry key="link"><bean class="org.apache.velocity.tools.generic.LinkTool" /></entry>
+            <entry key="context"><bean class="org.apache.velocity.tools.generic.ContextTool"/></entry>
+
+            <entry key="jello"><bean class="com.baidu.fis.velocity.tools.JelloTool" /> </entry>
+        </map>
+    </property>
+</bean>
+```
+> 注意
+> cacheUnresolved一定要设置成false，否则会影响前端分开部署。
+> 另外这里只启用了部分 velocity tools, 其他 tools 请根据自己需求配置。
+
+web.xml 配置
+
+```
+<listener>
+    <listener-class>com.baidu.fis.servlet.MapListener</listener-class>
+</listener>
+```
 
 # 感谢
 感谢[@云龙大大](https://github.com/fouber)在前端工程化方面的分享，以及[FIS团队](https://github.com/fex-team)的好工具，可以让自己搭建适合于自己的前端开发解决方案。
