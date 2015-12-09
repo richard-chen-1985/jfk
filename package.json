@@ -1,6 +1,6 @@
 {
   "name": "jfk",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A front-end solution base on fis3",
   "main": "index.js",
   "bin": {
