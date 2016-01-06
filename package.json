@@ -1,6 +1,6 @@
 {
   "name": "jfk",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A front-end solution base on fis3",
   "main": "index.js",
   "bin": {
@@ -28,12 +28,12 @@
     "fis-optimizer-png-compressor": "^0.1.3",
     "fis-optimizer-uglify-js": "^0.1.14",
     "fis-parser-sass": "^0.3.15",
-    "fis3": "^3.3.9",
+    "fis3": "^3.3.12",
     "fis3-command-server": "0.0.7",
     "fis3-deploy-replace": "^1.0.2",
     "fis3-hook-amd": "^0.1.13",
     "fis3-hook-cmd": "^0.1.2",
-    "fis3-hook-commonjs": "^0.1.5",
+    "fis3-hook-commonjs": "^0.1.8",
     "fis3-preprocessor-extlang": "^1.1.6",
     "fis3-server-jfk": "0.0.6",
     "liftoff": "^2.2.0",
