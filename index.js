@@ -102,7 +102,7 @@ function initGlobal(config) {
 
         // 对 sass 文件支持
         .match('*.{sass,scss}', {
-            parser: fis.plugin('sass', {
+            parser: fis.plugin('node-sass', {
                 outputStyle: 'expanded'
             }),
             rExt: '.css'
