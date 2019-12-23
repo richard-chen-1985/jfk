@@ -7,7 +7,7 @@ front-end solution based on fis3 for java（基于FIS3的JAVA Velocity前端工�
 * `jfk server start` 开启本地服务器
 * `jfk release` 发布本地测试代码到本地服务器
 
-查看本解决方案的demo请到[https://github.com/richard-chen-1985/jfk-demo](https://github.com/richard-chen-1985/jfk-demo)
+查看本解决方案的demo请到[https://github.com/richardchen85/jfk-demo](https://github.com/richard-hen85/jfk-demo)
 
 # 1. 工程化目标
 * 开发时
